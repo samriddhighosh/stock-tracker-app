@@ -14,6 +14,12 @@ declare global {
         preferredIndustry: string;
     };
 
+    type UserForNewsEmail = {
+        id:string;
+        email:string;
+        name?:string;
+    }
+
     type CountrySelectProps = {
         name: string;
         label: string;
