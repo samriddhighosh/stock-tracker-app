@@ -1,3 +1,15 @@
+declare module 'react-select-country-list' {
+    interface CountryList {
+        getData: () => { label: string; value: string }[];
+        getLabel: (value: string) => string;
+        getValue: (label: string) => string;
+        getLabels: () => string[];
+        getValues: () => string[];
+    }
+    const countries: () => CountryList;
+    export default countries;
+}
+
 declare global {
     type SignInFormData = {
         email: string;
