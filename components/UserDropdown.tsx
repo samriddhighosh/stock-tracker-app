@@ -2,15 +2,9 @@
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuPortal,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -18,17 +12,19 @@ import { useRouter } from "next/navigation"
 import { Button } from "./ui/button";
 import { LogOut } from "lucide-react";
 import NavItems from "./NavItems";
+import { signOut } from "@/lib/actions/auth.actions";
 
 
-const UserDropdown = () => {
+const UserDropdown = ({user}:{user:User}) => {
 
     const router = useRouter();
 
     const handleSignOut = async() => {
+        await signOut();
         router.push("/sign-in")
     }
 
-    const user = {name: 'Somi', email:'contact@studios.com'}
+    //const user = {name: 'Somi', email:'contact@studios.com'}
   return (
     <DropdownMenu>
         <DropdownMenuTrigger asChild>

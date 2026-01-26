@@ -1,27 +1,21 @@
 import { Label } from '@radix-ui/react-dropdown-menu'
 import React, { useMemo, useState } from 'react'
-import { Controller } from 'react-hook-form'
 import {
   Command,
-  CommandDialog,
   CommandEmpty,
-  CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
-  CommandShortcut,
 } from "@/components/ui/command"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-
-
 import countryList from 'react-select-country-list'
 import { cn } from '@/lib/utils'
 import { ChevronsUpDown } from 'lucide-react'
+import { Controller } from 'react-hook-form'
 
 const CountrySelectField = ({name, label, control, required, error}: CountrySelectProps) => {
     const options = useMemo(() => countryList().getData(), [])
@@ -37,10 +31,10 @@ const CountrySelectField = ({name, label, control, required, error}: CountrySele
     return (
     <div className='space-y-2'>
 
-        <Label htmlFor={name} className='form-label'>{label}</Label>
+        <Label className='form-label'>{label}</Label>
                 <Popover>
                     <PopoverTrigger className={cn(
-                            "border-input data-[placeholder]:text-muted-foreground [&_svg:not([class*='text-'])]:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 dark:hover:bg-input/50 flex w-fit items-center justify-between gap-2 rounded-md border bg-transparent px-3 py-2 text-sm whitespace-nowrap shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 w-full h-12 text-base",
+                            "border-input data-placeholder:text-muted-foreground [&_svg:not([class*='text-'])]:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 dark:hover:bg-input/50 flex w-fit items-center justify-between gap-2 rounded-md border bg-transparent px-3 py-2 text-sm whitespace-nowrap shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 w-full h-12 text-base",
                             
                           )}>
                            <div className='flex gap-2'>
@@ -78,5 +72,27 @@ const CountrySelectField = ({name, label, control, required, error}: CountrySele
     </div>
   )
 }
+
+// export const CountrySelectField = ({name,label,control,error, required=false}:CountrySelectProps) => {
+//   return(
+//     <div className='space-y-2'>
+//       <Label>
+//         {label}
+//       </Label>
+//       <Controller
+//         name={name}
+//         control={control}
+//         rules={{required:required ? `Please select ${label.toLowerCase()}`:false,}}
+//         render={({field})=>(
+//           <CountrySelect value={field.value} onChange={field.onChange}/>
+//         )}
+//       />
+//       {error && <p className='text-sm text-red-500'>{error.message}</p>}
+//         <p className='text-xs text-gray-500'>
+//           Helps us show market data and news relevant to you
+//         </p>
+//     </div>
+//   )
+// }
 
 export default CountrySelectField
