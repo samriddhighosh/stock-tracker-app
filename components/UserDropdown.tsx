@@ -15,7 +15,7 @@ import NavItems from "./NavItems";
 import { signOut } from "@/lib/actions/auth.actions";
 
 
-const UserDropdown = ({user, initialStocks}:{user:User, initialStocks:StockWithWatchlistStatus}) => {
+const UserDropdown = ({user, initialStocks}:{user:User, initialStocks:StockWithWatchlistStatus[]}) => {
 
     const router = useRouter();
 
